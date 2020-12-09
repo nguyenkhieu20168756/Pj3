@@ -58,7 +58,7 @@
         <v-menu open-on-hover offset-y>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on">
-              <span>Shop</span>
+              <span>Category</span>
             </v-btn>
           </template>
           <v-card
@@ -66,19 +66,17 @@
             max-width="344"
             outlined
           >
-
             <v-list-item
               v-for="(item, index) in items"
               :key="index"
-              @click=""
-              href="/shop"
+              :href="`/product/${item._id}`"
             >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.name }}</v-list-item-title>
             </v-list-item>
 
           </v-card>
         </v-menu>
-        <a href="/product" class="v-btn">
+        <a href="/shop" class="v-btn">
           <span>Product</span>
         </a>
         <v-btn href="/blog">
@@ -138,18 +136,28 @@
   </v-app>
 </template>
 <script>
+    import axios from '../service/api'
     export default {
         data () {
             return {
-                items: [
-                    { title: 'T-Shirts' },
-                    { title: 'Jackets' },
-                    { title: 'Shirts' },
-                    { title: 'Jeans' },
-                    { title: 'Shoes' },
-                ],
+                items: [],
                 activeBtn: 1,
+                on : ''
             }
         },
+        methods:{
+          on(){
+            return true
+          },
+          async getCate(){
+            await axios.get('producttype').then(res => {
+              console.log(res.data)
+              return this.items = res.data
+              }).catch(err => console.log(err))
+          }
+        },
+        created(){
+          this.getCate()
+        }
     }
 </script>

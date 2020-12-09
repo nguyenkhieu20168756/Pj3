@@ -7,6 +7,7 @@ import Blog from '@/components/Blog'
 import Post from '@/components/Post'
 import Cart from '@/components/Cart'
 import Layout from '@/components/Layout'
+import Category from '../components/Category.vue'
 
 Vue.use(Router)
 
@@ -27,7 +28,12 @@ export default new Router({
           name:'Shop'
         },
         {
-          path:'/product',
+          path:'/product/:id',
+          component:Category,
+          name:'Category'
+        },
+        {
+          path:'/product/details/:id',
           component:Product,
           name:'Product'
         },

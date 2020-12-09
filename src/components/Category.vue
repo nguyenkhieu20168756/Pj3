@@ -196,7 +196,7 @@ import axios from '../service/api'
         }),
         methods:{
           getProduct(){
-            axios.get('product').then(res => this.products = res.data).catch(err => console.log(err))
+            axios.get(`product/${this.$route.params.id}`).then(res => this.products = res.data).catch(err => console.log(err))
           }
         },
         created(){
