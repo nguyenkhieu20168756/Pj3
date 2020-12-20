@@ -8,7 +8,8 @@ import Post from '@/components/Post'
 import Cart from '@/components/Cart'
 import Layout from '@/components/Layout'
 import Category from '../components/Category.vue'
-
+import Login from '../components/login.vue';
+import Search from '../components/search.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -50,10 +51,25 @@ export default new Router({
         {
           path:'/cart',
           component:Cart,
-          name:'Cart'
+          name:'Cart',
+          beforeEnter(to, form, next){
+            if(localStorage.user){
+              next()
+            }else{
+              next('/login')
+            }
+          }
+        },
+        {
+          path : '/search',
+          component : Search,
+          name : 'search'
         }
       ]
-
+    },
+    {
+      path:'/login',
+      component:Login
     }
   ],
     mode:'history'

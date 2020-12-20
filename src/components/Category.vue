@@ -54,15 +54,6 @@
             </v-container>
             <v-divider></v-divider>
             <v-card-title class="pb-0">Size</v-card-title>
-            <v-container class="pt-0" fluid>
-              <v-checkbox  label="XS" hide-details dense></v-checkbox>
-              <v-checkbox  label="S" hide-details dense></v-checkbox>
-              <v-checkbox  label="M" hide-details dense></v-checkbox>
-              <v-checkbox  label="L" hide-details dense></v-checkbox>
-              <v-checkbox  label="XL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXXL" hide-details dense></v-checkbox>
-            </v-container>
 
           </v-card>
         </div>
@@ -84,7 +75,7 @@
           <v-divider></v-divider>
 
           <div class="row text-center">
-            <div class="col-md-3 col-sm-6 col-xs-12" :key="pro.id" v-for="pro in products">
+            <div class="col-md-3 col-sm-6 col-xs-12" :key="pro.id" v-for="pro in getProductByCategory">
               <v-hover v-slot:default="{ hover }">
                 <v-card
                   class="mx-auto"
@@ -139,6 +130,7 @@
   }
 </style>
 <script>
+import {mapGetters} from 'vuex';
 import axios from '../service/api'
     export default {
         data: () => ({
@@ -194,13 +186,9 @@ import axios from '../service/api'
             ],
             products :[]
         }),
-        methods:{
-          getProduct(){
-            axios.get(`product/${this.$route.params.id}`).then(res => this.products = res.data).catch(err => console.log(err))
-          }
-        },
-        created(){
-          this.getProduct()
+
+        computed:{
+          ...mapGetters(['getProductByCategory'])
         }
     }
 </script>

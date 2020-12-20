@@ -84,7 +84,7 @@
           <v-divider></v-divider>
 
           <div class="row text-center">
-            <div class="col-md-3 col-sm-6 col-xs-12" :key="pro.id" v-for="pro in getProducts">
+            <div class="col-md-3 col-sm-6 col-xs-12" :key="pro.id" v-for="pro in getProductSearch">
               <v-hover v-slot:default="{ hover }">
                 <v-card
                   class="mx-auto"
@@ -109,9 +109,9 @@
 
                     </v-expand-transition>
                   </v-img>
-                  <v-card-text class="text--primary" style="height : 100px">
+                  <v-card-text class="text--primary">
                     <div><a href="/product" style="text-decoration: none">{{pro.name}}</a></div>
-                    <div class="">${{pro.price}}</div>
+                    <div>${{pro.price}}</div>
                   </v-card-text>
                 </v-card>
               </v-hover>
@@ -119,14 +119,14 @@
           </div>
           <template>
             <div class="text-center">
-              <v-container @click="getProduct(page)">
+              <v-container>
                 <v-row justify="center">
                   <v-col cols="6">
                     <v-container class="max-width">
                       <v-pagination
                         v-model="page"
                         class="my-4"
-                        :length="getAllpage"
+                        :length="15"
                       ></v-pagination>
                     </v-container>
                   </v-col>
@@ -151,7 +151,9 @@
 </style>
 <script>
 import axios from '../service/api'
-import {mapActions, mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
+
+
     export default {
         data: () => ({
             range: [0, 10000],
@@ -206,18 +208,8 @@ import {mapActions, mapGetters} from 'vuex';
             ],
             products :[]
         }),
-        methods:{
-          ...mapActions(['getProduct']),
-          test(){
-            console.log('gigi');
-          }
-        },
         computed:{
-          ...mapGetters(['getProducts', 'getAllpage'])
-        },
-        mounted(){
-          this.getProduct()
+          ...mapGetters(['getProductSearch'])
         }
     }
 </script>
-

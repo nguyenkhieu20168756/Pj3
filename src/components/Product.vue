@@ -5,52 +5,47 @@
         <div class="col-md-5 col-sm-5 col-xs-12">
           <v-carousel>
             <v-carousel-item
-              :src="items.image"
+              :src="product.image"
             >
             </v-carousel-item>
             <v-carousel-item
-              :src="items.image"
+              :src="product.image"
             >
             </v-carousel-item>
             <v-carousel-item
-              :src="items.image"
+              :src="product.image"
             >
             </v-carousel-item>
           </v-carousel>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">
-          <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
+          <v-breadcrumbs class="pb-0" :itemds="breadcrums"></v-breadcrumbs>
           <div class="pl-6">
-            <p class="display-1 mb-0">{{items.name}}</p>
+            <p class="display-1 mb-0">{{product.name}}</p>
             <v-card-actions class="pa-0">
-              <p class="headline font-weight-light pt-3">${{items.price}} <del style="" class="subtitle-1 font-weight-thin">${{items.price + items.price*0.1}}</del></p>
+              <p class="headline font-weight-light pt-3">${{product.price}} <del style="" class="subtitle-1 font-weight-thin">${{product.price + product.price*0.1}}</del></p>
               <v-spacer></v-spacer>
               <v-rating v-model="rating" class="" background-color="warning lighten-3"
                         color="warning" dense></v-rating>
               <span class="body-2	font-weight-thin"> 25 REVIEWS</span>
             </v-card-actions>
-            <p class="subtitle-1 font-weight-thin">{{items.description}}</p>
-            <p class="title">SIZE</p>
-            <v-radio-group v-model="row" row>
-              <v-radio label="XS" value="XS"></v-radio>
-              <v-radio label="S" value="s"></v-radio>
-              <v-radio label="M" value="m"></v-radio>
-              <v-radio label="L" value="l"></v-radio>
-              <v-radio label="XL" value="xl"></v-radio>
-            </v-radio-group>
-            <p class="title">ITEMS</p>
-
+            <p class="subtitle-1 font-weight-thin">{{product.description}}</p>
+            <p class="title">Items</p>
+              
             <v-text-field
                 outlined
                 style="width:100px"
                 :value="1"
+                :max ="product.amount"
                 dense
+                v-model="quantity"
+                type="number"
             ></v-text-field>
-            <v-btn class="primary white--text" outlined tile dense><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
+            <p v-if="product.amount == 0">out of product</p>
+            <p v-else>Amount : {{product.amount}}</p>
+            <v-btn v-if="product.amount !== 0" class="primary white--text" outlined tile dense @click="addToCart"><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
             <v-btn class="ml-4" outlined tile>ADD TO WISHLIST</v-btn>
-
-          </div>
-
+          </div> 
       </div>
       </div>
       <div class="row">
@@ -60,7 +55,7 @@
             <v-tab >Materials</v-tab>
             <v-tab>REVIEWS</v-tab>
             <v-tab-item>
-              <p class="pt-10 subtitle-1 font-weight-thin">{{items.description}}</p>
+              <p class="pt-10 subtitle-1 font-weight-thin">{{product.description}}</p>
             </v-tab-item>
             <v-tab-item>
               <p class="pt-10 subtitle-1 font-weight-thin">
@@ -79,7 +74,7 @@
               >
                 <v-list-item-group v-model="item" color="primary">
                   <v-list-item
-                    v-for="(item, i) in items"
+                    v-for="(item, i) in product"
                     :key="i"
                     inactive="true"
                   >
@@ -351,38 +346,45 @@
 <script>
 
 import axios from '../service/api'
-    export default {
-        data: () => ({
-            rating:4.5,
-            breadcrums: [
-                {
-                    text: 'Home',
-                    disabled: false,
-                    href: 'breadcrumbs_home',
-                },
-                {
-                    text: 'Clothing',
-                    disabled: false,
-                    href: 'breadcrumbs_clothing',
-                },
-                {
-                    text: 'T-Shirts',
-                    disabled: true,
-                    href: 'breadcrumbs_shirts',
-                },
-            ],
-            item: 5,
-            items : []
-        }),
-    methods: {
-      getPro(){
-        console.log(this.$route.params)
-        axios.get(`product/details/${this.$route.params.id}`).then(res => this.items = res.data).catch(err => console.log(err))
-      }
+export default {
+  data: () => ({
+      rating:4.5,
+      breadcrums: [
+          {
+              text: 'Home',
+              disabled: false,
+              href: 'breadcrumbs_home',
+          },
+          {
+              text: 'Clothing',
+              disabled: false,
+              href: 'breadcrumbs_clothing',
+          },
+          {
+              text: 'T-Shirts',
+              disabled: true,
+              href: 'breadcrumbs_shirts',
+          },
+      ],
+      item: 5,
+      product : {},
+      quantity : 1
+  }),
+  methods: {
+    async getPro(){
+      // console.log(this.$route.params)
+      let id = this.$route.params.id
+      return this.product = (await axios.get(`product/details/${id}`)).data
     },
-
-    created(){
-      this.getPro()
+    addToCart(){
+      this.$store.dispatch('addProductToCart', {
+        product : this.product,
+        quantity : parseInt(this.quantity)
+      })
     }
-    }
+  },
+  created(){
+    this.getPro()
+  }
+}
 </script>

@@ -17,65 +17,37 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
+              <tr v-for="item in getcart" :key="item._id">
                 <td>
                   <v-list-item
                   key="1"
-                  @click=""
                 >
                   <v-list-item-avatar>
-                    <v-img :src="require('../assets/img/shop/1.jpg')"></v-img>
+                    <v-img :src="item.product.image"></v-img>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title >Item 1</v-list-item-title>
-                    <v-list-item-subtitle>Lorem Ipsum</v-list-item-subtitle>
+                    <v-list-item-title >{{item.product.name}}</v-list-item-title>
+                    <v-list-item-subtitle>{{item.product.description}}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item></td>
-                <td>$40.00</td>
+                <td>${{item.product.price}}</td>
                 <td>
-                  <v-text-field
-                    class="pt-10"
-                    label="Outlined"
-                    style="width: 80px;"
-                    single-line
-                    outlined
-                    value="2"
-                    type="number"
-                  ></v-text-field>
+                  <div class="d-flex">
+                    <button @click="downQuantity(item.product)" class="mr-3 btn btn-outline-success" style="height : 30px; margin-top : 50px; padding-top: 2px">-</button>
+                    <v-text-field
+                      class="pt-10"
+                      label="Outlined"
+                      style="width:20px;"
+                      single-line
+                      outlined
+                      :value="item.quantity"
+                    ></v-text-field>
+                    <button @click="upQuantity(item.product)" class="ml-3 btn btn-outline-success" style="height : 30px; margin-top : 50px; padding-top: 2px">+</button>
+                  </div>
                 </td>
-                <td>$80.00</td>
-                <td><a>X</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <v-list-item
-                  key="1"
-                  @click=""
-                >
-                  <v-list-item-avatar>
-                    <v-img :src="require('../assets/img/shop/2.jpg')"></v-img>
-                  </v-list-item-avatar>
-
-                  <v-list-item-content>
-                    <v-list-item-title >Item 2</v-list-item-title>
-                    <v-list-item-subtitle>Lorem Ipsum</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item></td>
-                <td>$40.00</td>
-                <td>
-                  <v-text-field
-                    class="pt-10"
-                    label="Outlined"
-                    style="width: 80px;"
-                    single-line
-                    outlined
-                    value="2"
-                    type="number"
-                  ></v-text-field>
-                </td>
-                <td>$80.00</td>
-                <td><a>X</a></td>
+                <td>${{item.quantity * item.product.price}}</td>
+                <td><button class="btn btn-danger" @click.prevent="deleteProductToCart(item.product)">X</button></td>
               </tr>
               </tbody>
             </template>
@@ -90,7 +62,7 @@
               <tbody>
               <tr>
                 <td>Order Subtotal</td>
-                <td class="text-right" style="width: 50px;">$160.00</td>
+                <td class="text-right" style="width: 50px;">${{getOrder}}</td>
               </tr>
               <tr>
                 <td>Shipping Charges</td>
@@ -102,13 +74,20 @@
               </tr>
               <tr>
                 <td>Total</td>
-                <td class="text-right" style="width: 50px;"><b>$175.00</b></td>
+                <td class="text-right" style="width: 50px;"><b>${{total}}</b></td>
               </tr>
               </tbody>
             </template>
           </v-simple-table>
+          <br>
+          <v-text-field 
+            prepend-icon="mdi-map-marker"
+            label="Address" 
+            :rules="rules"
+            hide-details="auto"
+            v-model="address"></v-text-field>
           <div class="text-center">
-            <v-btn class="primary white--text mt-5" outlined>PROCEED TO PAY</v-btn>
+            <v-btn class="primary white--text mt-5" outlined @click="checkout({total, address})">PROCEED TO PAY</v-btn>
           </div>
         </v-col>
       </v-row>
@@ -155,7 +134,10 @@
   </div>
 </template>
 <script>
+import Product from './Product'
+import {mapActions, mapMutations, mapGetters} from 'vuex';
     export default {
+  components: { Product },
         data: () => ({
             rating: 4.5,
             breadcrums: [
@@ -175,7 +157,25 @@
                     href: 'breadcrumbs_shirts',
                 },
             ],
-        })
+            rules: [
+              value => !!value || 'Required.',
+              value => (value && value.length >= 10) || 'Min 10 characters',
+            ],
+            address :'',
+        }),
+        computed:{
+          getcart(){
+            return this.$store.getters.getCart
+          },
+          ...mapGetters(['getOrder']),
+          total(){
+            return this.getOrder + 15
+          }
+        },
+        methods:{
+          ...mapActions(['deleteProductToCart', 'checkout']),
+          ...mapMutations(['upQuantity', 'downQuantity']),
+        }
     }
 </script>
 
