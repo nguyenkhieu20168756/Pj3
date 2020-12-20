@@ -1,0 +1,70 @@
+<div>
+    <h1>Sản phẩm</h1>
+
+
+    <table class="table table-hover mt-5">
+        <tr>
+
+            <th>Image</th>
+            <th>Tên</th>
+            <th>Thương hiệu</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Size</th>
+            <th>Danh mục sản phẩm</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+
+
+
+        {{#each product}}
+        <tr>
+            <td>
+                {{!-- {{#each this}} --}}
+                <img style="width: 100px; height:100px" src="{{image}}" alt="">
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{name}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{brand}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{price}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{amount}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{namesize}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                {{!-- {{#each this}} --}}
+                {{producttype}}
+                {{!-- {{/each}} --}}
+            </td>
+            <td>
+                <a href="./edit/{{_id}}" class="btn btn-primary">Sửa</a>
+            </td>
+            <td>
+                <a href="./xoa/{{_id}}" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+        {{/each}}
+
+    </table>
+    <a name="Thêm sản phẩm" id="" class="btn btn-primary" href="/products/addproduct" role="button">Thêm sản phẩm</a>
+</div>

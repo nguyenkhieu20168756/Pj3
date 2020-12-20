@@ -1,0 +1,39 @@
+<div class="container pt-5">
+    
+    <form action="" method="post">
+        
+        <p>Tên</p>
+        <input class="form-control" type="text" name="name" value="{{#each value}}{{name}}{{/each}}">
+        <p>Thương hiệu</p>
+        <input class="form-control" type="text" name="brand" value="{{#each value}}{{brand}}{{/each}}">
+        <p>Giá</p>
+        <input class="form-control" type="text" name="price" value="{{#each value}}{{price}}{{/each}}">
+        <p>Số lượng</p>
+        <input class="form-control" type="text" name="amount" value="{{#each value}}{{amount}}{{/each}}">
+        <p>Ảnh</p>
+        <input class="form-control" type="text" name="image" value="{{#each value}}{{image}}{{/each}}">
+        <p>Mô tả</p>
+        <input class="form-control" type="text" name="description" value="{{#each value}}{{description}}{{/each}}">
+        <p>Size</p>
+        <div class="d-flex">
+            <input class="form-control mr-3" type="text" name="namesize" placeholder="Tên size" value="{{#each value}}{{namesize}}{{/each}}">
+            <input class="form-control" type="text" name="amountsize" placeholder="Số lượng" value="{{#each value}}{{amountsize}}{{/each}}" >
+        </div>
+        <p>Danh mục :</p>
+        <div class="form-group">
+          <label for=""></label>
+          <select class="form-control" name="producttype" id="">
+            {{#each producttype}}
+            <option>
+                {{#each this}}
+                {{name}}
+                {{/each}}
+            </option>
+           {{/each}}
+          </select>
+        </div>
+        <br>
+        <button class="btn btn-primary mt-5">Update</button>
+    </form>
+</div>>
+
