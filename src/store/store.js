@@ -18,13 +18,13 @@ export const store = new Vuex.Store({
     setUser(state){
       return state.user = decode(localStorage.user).sub
     },
-    addToCart(state, {product, quantity}){
+    addToCart(state, {product, size,  quantity}){
       let productInCart = state.cart.find(item => item.product._id === product._id)
       if(productInCart){
         productInCart.quantity += quantity
         return
       }
-      state.cart.push({product, quantity})
+      state.cart.push({product, size, quantity})
     },
     async setCart(state){
       let cart = await api.get(`getCart/${state.user._id}`)
@@ -74,11 +74,16 @@ export const store = new Vuex.Store({
         state.products = res.data.pagination
         state.allpage = res.data.allPage
       })
+    },
+    FILTER(state, range){
+      api.get(`filter/${range[0]}/${range[1]}`).then(res =>{
+        state.products = res.data
+      })
     }
   },
   actions:{
-    async addProductToCart({commit, state}, {product, quantity}){
-      commit('addToCart', {product, quantity})
+    async addProductToCart({commit, state}, {product, size, quantity}){
+      commit('addToCart', {product, size, quantity})
       // console.log(state.cart);
       await api.put(`cart/${state.user._id}`, state.cart)
       return router.push('/shop')
@@ -102,6 +107,9 @@ export const store = new Vuex.Store({
     },
     getProduct({commit}, page){
       commit('GET_PRODUCT', page)
+    },
+    filter({commit}, range){
+      commit('FILTER', range)
     }
   },
   getters:{

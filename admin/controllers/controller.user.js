@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var adminDb = require('../models/admin.model');
+
 const { json } = require('body-parser');
 
 module.exports.register = (req, res) => {

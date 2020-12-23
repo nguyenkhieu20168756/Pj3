@@ -29,3 +29,6 @@ router.get('/search', controller.search);
 router.get('/order', controller.order)
 
 router.get('/order/:id', controller.confimed)
+
+//
+router.get('/user', controller.getUser);

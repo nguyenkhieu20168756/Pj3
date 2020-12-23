@@ -9,8 +9,7 @@ const productSchema = new mongoose.Schema({
     image: String,
     producttype: String,
     description: String,
-    namesize : String,
-    amountsize: Number
+    namesize : Array
 });
 // tạo collection
 module.exports = mongoose.model('productDb',productSchema,'product');

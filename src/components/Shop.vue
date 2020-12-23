@@ -3,16 +3,9 @@
     <v-container>
       <div class="row">
         <div
-         class="col-md-3 col-sm-3 col-xs-12"
-        >
+         class="col-md-3 col-sm-3 col-xs-12">
           <v-card outlined>
-            <v-card-title>Filters</v-card-title>
-            <v-divider></v-divider>
-            <template>
-              <v-treeview :items="items" :open="[1]" :active="[5]" :selected-color="'#fff'" activatable open-on-click dense></v-treeview>
-            </template>
-            <v-divider></v-divider>
-            <v-card-title>Price</v-card-title>
+           <v-card-title>Filters</v-card-title>
             <v-range-slider
               v-model="range"
               :max="max"
@@ -44,26 +37,12 @@
                 ></v-text-field>
               </v-col>
             </v-row>
+            <button class="btn btn-success ml-5" @click="filter(range)">Filter</button>
             <v-divider></v-divider>
-            <v-card-title class="pb-0">Customer Rating</v-card-title>
-            <v-container class="pt-0"  fluid>
-              <v-checkbox append-icon="mdi-star" label="4 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="3 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="2 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="1 & above" hide-details dense></v-checkbox>
-            </v-container>
+            <template>
+              <v-treeview :items="items" :open="[1]" :active="[5]" :selected-color="'#fff'" activatable open-on-click dense></v-treeview>
+            </template>
             <v-divider></v-divider>
-            <v-card-title class="pb-0">Size</v-card-title>
-            <v-container class="pt-0" fluid>
-              <v-checkbox  label="XS" hide-details dense></v-checkbox>
-              <v-checkbox  label="S" hide-details dense></v-checkbox>
-              <v-checkbox  label="M" hide-details dense></v-checkbox>
-              <v-checkbox  label="L" hide-details dense></v-checkbox>
-              <v-checkbox  label="XL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXXL" hide-details dense></v-checkbox>
-            </v-container>
-
           </v-card>
         </div>
         <div
@@ -207,7 +186,7 @@ import {mapActions, mapGetters} from 'vuex';
             products :[]
         }),
         methods:{
-          ...mapActions(['getProduct']),
+          ...mapActions(['getProduct', 'filter']),
           test(){
             console.log('gigi');
           }

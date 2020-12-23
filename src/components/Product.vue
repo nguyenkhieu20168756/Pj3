@@ -36,11 +36,15 @@
                 outlined
                 style="width:100px"
                 :value="1"
-                :max ="product.amount"
+                :max="product.amount"
                 dense
                 v-model="quantity"
                 type="number"
             ></v-text-field>
+            <h5>Choose size</h5>
+            <select class="custom-select mb-5" style="width : 200px"  v-model="size">
+              <option v-for="i of product.namesize" :key="i">{{i}}</option>
+            </select>
             <p v-if="product.amount == 0">out of product</p>
             <p v-else>Amount : {{product.amount}}</p>
             <v-btn v-if="product.amount !== 0" class="primary white--text" outlined tile dense @click="addToCart"><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
@@ -348,6 +352,7 @@
 import axios from '../service/api'
 export default {
   data: () => ({
+      size : '',
       rating:4.5,
       breadcrums: [
           {
@@ -379,6 +384,7 @@ export default {
     addToCart(){
       this.$store.dispatch('addProductToCart', {
         product : this.product,
+        size : this.size,
         quantity : parseInt(this.quantity)
       })
     }

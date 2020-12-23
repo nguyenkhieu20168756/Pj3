@@ -12,7 +12,6 @@ router.get('/login', controller.pagelogin);
 router.post('/login', controller.login);
 
 
-
 //trang đăng  xuất
 router.get('/logout', controller.logout);
 module.exports = router;

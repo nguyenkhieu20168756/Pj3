@@ -2,7 +2,7 @@ const productDb = require('../models/product.model');
 const {json} = require('body-parser');
 const producttypeDb = require('../models/producttype.model');
 const orderDb = require('../models/order.model')
-
+const userDb = require('../models/user.model')
 
  module.exports.showproduct = async(req, res) => {
      let data = await productDb.find();
@@ -15,9 +15,15 @@ const orderDb = require('../models/order.model')
      return res.render('products/addproduct',{producttype:dm , cookie : req.signedCookies.email});
  }
  module.exports.postproduct = (req, res) => {
+    var size = []
+    let str = req.body.namesize.split(', ')
+    for(item of str){
+        size.push(item)
+    }
+    req.body.namesize = size
+
     productDb.create(req.body).then(()=> res.redirect('/products/product')).catch(er => console.log(er))
  }
- 
 
  //hiển thị danh mục sản phẩm
  module.exports.showproducttype = async(req, res) => {
@@ -49,6 +55,12 @@ module.exports.editsp = async(req, res) => {
 
 // update sản phẩm
 module.exports.update = (req, res) => {
+    var size = []
+    let str = req.body.namesize.split(', ')
+    for(item of str){
+        size.push(item)
+    }
+    req.body.namesize = size
     var id = req.params.id;
     productDb.findByIdAndUpdate(id, req.body).then(() => res.redirect('/products/product')).catch(err => console.log(err))
 }
@@ -86,4 +98,10 @@ module.exports.order = async (req, res)=>{
 module.exports.confimed = async (req, res) =>{
    await orderDb.findByIdAndUpdate({_id : req.params.id} , {$set:{completed : 'confirmed'}})
    res.redirect('/products/order')
+}
+
+module.exports.getUser = async (req, res) =>{
+    let a = await userDb.find()
+    let users = JSON.parse(JSON.stringify(a))
+    res.render('products/user', {users : users, cookie : req.signedCookies.email})
 }

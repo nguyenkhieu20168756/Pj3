@@ -15,10 +15,7 @@
         <p>Mô tả</p>
         <input class="form-control" type="text" name="description" value="{{#each value}}{{description}}{{/each}}">
         <p>Size</p>
-        <div class="d-flex">
-            <input class="form-control mr-3" type="text" name="namesize" placeholder="Tên size" value="{{#each value}}{{namesize}}{{/each}}">
-            <input class="form-control" type="text" name="amountsize" placeholder="Số lượng" value="{{#each value}}{{amountsize}}{{/each}}" >
-        </div>
+        <input class="form-control mr-3" type="text" name="namesize" placeholder="Tên size" value="{{#each value}}{{#each namesize}}{{this}}{{/each}}{{/each}}">
         <p>Danh mục :</p>
         <div class="form-group">
           <label for=""></label>

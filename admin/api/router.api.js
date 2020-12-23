@@ -26,4 +26,8 @@ router.get('/search/:text', controller.search)
 //pagination
 router.get('/pagination/:page', controller.pagination)
 
+//filer
+router.get('/filter/:min/:max', controller.filter)
+
+
 module.exports = router;

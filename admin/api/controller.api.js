@@ -126,12 +126,22 @@ module.exports.search = async(req, res) =>{
 
 }
 // pagination
-
 module.exports.pagination = async (req, res) =>{
-    let start = (req.params.page - 1) * 8 + 1
+    let start = (req.params.page - 1) * 8 
     let products = await productDb.find()
     let allPage = Math.ceil(products.length / 8)
     let pagination = products.slice(start, start + 8 )
     res.json({pagination : pagination, allPage : allPage})
 }
 
+
+//filter
+module.exports.filter = async(req, res) =>{
+    let min = req.params.min
+    let max = req.params.max
+    let pr = await productDb.find()
+    let product = pr.filter(item => {
+        return item.price >= min && item.price <=max
+    })
+    res.json(product)
+}

@@ -10,6 +10,7 @@
               <thead>
               <tr>
                 <th class="text-center">ITEM</th>
+                <th class="text-center">SIZE</th>
                 <th class="text-center">PRICE</th>
                 <th class="text-center">QUANTITY</th>
                 <th class="text-center">TOTAL</th>
@@ -31,6 +32,7 @@
                     <v-list-item-subtitle>{{item.product.description}}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item></td>
+                <td>{{item.size}}</td>
                 <td>${{item.product.price}}</td>
                 <td>
                   <div class="d-flex">
