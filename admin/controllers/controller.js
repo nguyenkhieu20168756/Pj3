@@ -6,9 +6,62 @@ const userDb = require('../models/user.model')
 
  module.exports.showproduct = async(req, res) => {
      let data = await productDb.find();
-     let sp = JSON.parse(JSON.stringify(data));
-     return res.render('products/product',{ product:sp, cookie : req.signedCookies.email});
- }
+     let dm = await producttypeDb.find();
+     //let sp = JSON.parse(JSON.stringify(data));
+     
+     let sosanpham1trang = 5;
+    let page = parseInt(req.query.page) || 1; //trang 1 -> page 2
+    let batdau = (page - 1) * sosanpham1trang; //bat dau bang 10
+    let ketthuc = page * sosanpham1trang;
+    let tongsotrang = Math.ceil(data.length / sosanpham1trang)
+
+    let arr = [];
+    if (page <= 3) {
+        for (var i = 1; i <= 5; i++) {
+            if (i)
+                arr.push(i);
+        }
+    } else if (page >= tongsotrang - 2) {
+        for (var i = tongsotrang - 4; i <= tongsotrang; i++) {
+            arr.push(i);
+
+        }
+    } else {
+
+        for (var i = page - 2; i <= page + 2; i++) {
+            if (i)
+                arr.push(i);
+        }
+    }
+
+
+    let pre = page - 1;
+    let next = page + 1;
+    if (page == tongsotrang) {
+        next = null;
+    }
+
+    if (page == 1) {
+        style = 'disabled'
+    } else {
+        style = ''
+    }
+
+    let sp = JSON.parse(JSON.stringify(data)).slice(batdau, ketthuc); //chuyển data thanhfh dạng JSON
+    return res.render('products/product', {
+        product: sp,
+        producttype: dm,
+        arr: arr,
+        pre: pre,
+        next: next,
+        style: style,
+        cookie : req.signedCookies.email
+
+
+    });
+    //return res.render('products/product',{ product:sp, cookie : req.signedCookies.email});
+}
+ 
  //thêm sản phẩm
  module.exports.addproduct = async (req,res)=> {
     var dm = await producttypeDb.find();

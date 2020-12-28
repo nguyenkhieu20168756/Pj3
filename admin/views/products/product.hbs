@@ -64,7 +64,21 @@
             </td>
         </tr>
         {{/each}}
-
     </table>
+
     <a name="Thêm sản phẩm" id="" class="btn btn-primary" href="/products/addproduct" role="button">Thêm sản phẩm</a>
+
+     <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item {{style}}"><a class="page-link" href="?page={{pre}}">Previous</a></li>
+                {{#each arr}}
+                <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}
+                        <span class="sr-only">(current)</span></a></li>
+                {{/each}}
+                {{#if next }}
+                <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+                {{/if}}
+
+            </ul>
+        </nav>
 </div>

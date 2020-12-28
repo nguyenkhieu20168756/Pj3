@@ -24,31 +24,25 @@
           v-model="text"
         />
       <v-spacer />
-      <div>
-        <div class="dropdown">
-          <a
-            class="btn btn-success dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <v-icon>mdi-account-circle</v-icon> {{getName}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <router-link v-if="is" to="/login" tag="button" class="dropdown-item"
+            >Login</router-link
           >
-            <v-icon>mdi-account-circle</v-icon> {{getName}}
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <router-link v-if="is" to="/login" tag="button" class="dropdown-item"
-              >Login</router-link
-            >
-            <button to="" tag="li" class="dropdown-item"
-              >Profile</button
-            >
-            <button v-if="!is" to="" tag="button" class="dropdown-item" @click="logout"
-              >Logout</button
-            >
-          </ul>
+          <button to="" tag="li" class="dropdown-item"
+            >Profile</button
+          >
+          <button v-if="!is" to="" tag="button" class="dropdown-item" @click="logout"
+            >Logout</button
+          >
         </div>
       </div>
+
       <v-btn icon>
         <v-badge content="2" value="2" color="green" overlap>
           <v-icon>mdi-bell</v-icon>

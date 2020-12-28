@@ -337,7 +337,7 @@
                 <v-icon class="display-2">mdi-headset</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">020-800-456-747</h3>
+                <h3 class="font-weight-light">035-939-6996</h3>
                 <p class="font-weight-thin">24/7 Available Support</p>
               </v-col>
             </v-row>
