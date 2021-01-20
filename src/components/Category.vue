@@ -6,8 +6,7 @@
          class="col-md-3 col-sm-3 col-xs-12">
           <v-card outlined>
 
-           <v-card-title>Filters</v-card-title>
-              {{range}}
+           <v-card-title>Lọc</v-card-title>
             <v-range-slider
               v-model="range"
               :max="max"
@@ -55,7 +54,6 @@
 
           <v-row dense>
             <v-col cols="12" sm="8" class="pl-6 pt-6">
-              <small>Showing 1-12 of 200 products</small>
             </v-col>
             <v-col cols="12" sm="4">
               <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px;" outlined dense></v-select>
@@ -78,7 +76,6 @@
                     height="200px"
                     :src="pro.image"
                   >
-                    <v-card-title>{{pro.description}} </v-card-title>
                     <v-expand-transition>
                       <div
                         v-if="hover"
@@ -124,35 +121,32 @@ import {mapGetters} from 'vuex';
 import axios from '../service/api'
     export default {
         data: () => ({
-            range: [0, 10000],
+            range: [0, 10000000],
             select:'Popularity',
             options: [
-                'Default',
-                'Popularity',
-                'Relevance',
                 'Price: Low to High',
                 'Price: High to Low',
             ],
             page:1,
             breadcrums: [
                 {
-                    text: 'Home',
-                    disabled: false,
+                    text: 'Trang chủ',
+                    disabled: true,
                     href: 'breadcrumbs_home',
                 },
                 {
-                    text: 'Clothing',
-                    disabled: false,
+                    text: 'Sản phẩm',
+                    disabled: true,
                     href: 'breadcrumbs_clothing',
                 },
                 {
-                    text: 'T-Shirts',
-                    disabled: true,
+                    text: '',
+                    disabled: false,
                     href: 'breadcrumbs_shirts',
                 },
             ],
             min:0,
-            max:10000,
+            max:10000000,
             items: [
                 {
                     id: 2,
@@ -176,9 +170,11 @@ import axios from '../service/api'
             ],
             products :[]
         }),
-
         computed:{
           ...mapGetters(['getProductByCategory'])
+        },
+        async mounted() {
+          this.breadcrums[2].text = (await axios.get(`/${this.$route.params.id}`)).data
         }
     }
 </script>

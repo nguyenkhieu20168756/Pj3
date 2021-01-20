@@ -9,9 +9,13 @@
       <!--      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />-->
 
       <v-toolbar-title style="width: 350px">
-        <a href="/" class="white--text" style="text-decoration: none"
-          ><v-icon>mdi-truck</v-icon>&nbsp;Shop</a
-        >
+        <v-img
+        class="logo"
+        :src="require('../assets/logo.png')"
+        height="60px"
+        width="60px"
+        @click="goHome"
+        ></v-img>
       </v-toolbar-title>
         <v-text-field
           v-on:keyup.13="search(text)"
@@ -32,13 +36,13 @@
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <router-link v-if="is" to="/login" tag="button" class="dropdown-item"
-            >Login</router-link
+            >Đăng nhập</router-link
           >
           <button to="" tag="li" class="dropdown-item"
-            >Profile</button
+            >Tài khoản</button
           >
           <button v-if="!is" to="" tag="button" class="dropdown-item" @click="logout"
-            >Logout</button
+            >Đăng xuất</button
           >
         </div>
       </div>
@@ -56,11 +60,11 @@
     </v-app-bar>
     <v-content>
       <v-bottom-navigation :value="activeBtn" color="primary" horizontal>
-        <router-link to="/" active-class="active"  tag="span" class="v-btn" >Home</router-link>
+        <router-link to="/" active-class="active"  tag="span" class="v-btn" >Trang Chủ</router-link>
         <v-menu open-on-hover offset-y>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on">
-              <span>Category</span>
+              <span>Danh mục</span>
             </v-btn>
           </template>
           <v-card class="mx-auto" max-width="344" outlined>
@@ -68,17 +72,17 @@
               v-for="(item, index) in items"
               :key="index"
               :to="`/product/${item._id}`"
-              @click="getProductByCategory(item._id)"
+              @click="getProductByCategory(item._id, item.name)"
             >
               <v-list-item-title>{{ item.name }}</v-list-item-title>
             </v-list-item>
           </v-card>
         </v-menu>
         <router-link to="/shop" class="v-btn">
-          <span>Product</span>
+          <span>Sản Phẩm</span>
         </router-link>
         <v-btn to="/blog">
-          <span>Blog</span>
+          <span>Tin Tức</span>
         </v-btn>
       </v-bottom-navigation>
     </v-content>
@@ -123,20 +127,20 @@
 </template>
 <script>
 import axios from "../service/api";
-import {mapMutations, mapGetters, mapActions} from 'vuex';
+import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       items: [],
       activeBtn: 0,
       on: "",
-      text : ''
+      text: "",
     };
   },
   methods: {
-    ...mapActions(['getProductByCategory', 'search']),
+    ...mapActions(["getProductByCategory", "search"]),
 
-    ...mapMutations(['setUser', 'setCart']),
+    ...mapMutations(["setUser", "setCart"]),
     async getCate() {
       await axios
         .get("producttype")
@@ -146,22 +150,29 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    logout(){
+    logout() {
       localStorage.clear();
-      return window.location.href = '/'
+      return (window.location.href = "/");
     },
+    goHome(){
+      return this.$router.push('/')
+    }
   },
   mounted() {
-    this.getCate(),
-    this.setUser(),
-    this.setCart()
+    this.getCate(), this.setUser(), this.setCart();
   },
-  computed:{
-    ...mapGetters(['getName','getCartCount']),
+  computed: {
+    ...mapGetters(["getName", "getCartCount"]),
 
-    is(){
-      return localStorage.user ? false : true
+    is() {
+      return localStorage.user ? false : true;
     },
-  }
+  },
 };
 </script>
+
+<style scoped>
+.logo{
+  cursor: pointer;
+}
+</style>

@@ -2,18 +2,18 @@
   <div>
     <v-container>
 
-      <p class="display-3 font-weight-light	text-center pa-4">SHOPPING CART</p>
+      <p class="display-3 font-weight-light	text-center pa-4">GIỎ HÀNG</p>
       <v-row>
         <v-col :cols="12" md="9" sm="12" >
           <v-simple-table>
             <template v-slot:default>
               <thead>
               <tr>
-                <th class="text-center">ITEM</th>
-                <th class="text-center">SIZE</th>
-                <th class="text-center">PRICE</th>
-                <th class="text-center">QUANTITY</th>
-                <th class="text-center">TOTAL</th>
+                <th class="text-center">Sản phẩm</th>
+                <th class="text-center">Size</th>
+                <th class="text-center">Giá</th>
+                <th class="text-center">Số lượng</th>
+                <th class="text-center">Thành tiền</th>
                 <th class="text-center"></th>
               </tr>
               </thead>
@@ -29,11 +29,10 @@
 
                   <v-list-item-content>
                     <v-list-item-title >{{item.product.name}}</v-list-item-title>
-                    <v-list-item-subtitle>{{item.product.description}}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item></td>
                 <td>{{item.size}}</td>
-                <td>${{item.product.price}}</td>
+                <td>{{item.product.price}} VNĐ</td>
                 <td>
                   <div class="d-flex">
                     <button @click="downQuantity(item.product)" class="mr-3 btn btn-outline-success" style="height : 30px; margin-top : 50px; padding-top: 2px">-</button>
@@ -48,7 +47,7 @@
                     <button @click="upQuantity(item.product)" class="ml-3 btn btn-outline-success" style="height : 30px; margin-top : 50px; padding-top: 2px">+</button>
                   </div>
                 </td>
-                <td>${{item.quantity * item.product.price}}</td>
+                <td>{{item.quantity * item.product.price}} VNĐ</td>
                 <td><button class="btn btn-danger" @click.prevent="deleteProductToCart(item.product)">X</button></td>
               </tr>
               </tbody>
@@ -56,27 +55,27 @@
           </v-simple-table>
         </v-col>
         <v-col :cols="12" md="3" sm="12" style="background-color: lightgray">
-          <p class="headline">Order Summary</p>
-          <p class="overline">Shipping and additional costs are calculated based on values you have entered.
+          <p class="headline">Hóa đơn thanh toán</p>
+          <p class="overline">CHI PHÍ VẬN CHUYỂN VÀ THUẾ ĐƯỢC TÍNH THEO CÁC GIÁ TRỊ BẠN ĐÃ NHẬP.
           </p>
           <v-simple-table>
             <template v-slot:default>
               <tbody>
               <tr>
-                <td>Order Subtotal</td>
-                <td class="text-right" style="width: 50px;">${{getOrder}}</td>
+                <td>Tổng tiền</td>
+                <td class="text-right" style="width: 50px;">{{getOrder}} VNĐ</td>
               </tr>
               <tr>
-                <td>Shipping Charges</td>
-                <td class="text-right" style="width: 50px;">$10.00</td>
+                <td>Phí ship</td>
+                <td class="text-right" style="width: 50px;">20.000 VNĐ</td>
               </tr>
               <tr>
-                <td>Tax</td>
-                <td class="text-right" style="width: 50px;">$5.00</td>
+                <td>Thuế</td>
+                <td class="text-right" style="width: 50px;">{{getOrder * 0.05}} VNĐ</td>
               </tr>
               <tr>
-                <td>Total</td>
-                <td class="text-right" style="width: 50px;"><b>${{total}}</b></td>
+                <td>Tổng hóa đơn</td>
+                <td class="text-right" style="width: 50px;"><b>{{total}} VNĐ</b></td>
               </tr>
               </tbody>
             </template>
@@ -84,12 +83,12 @@
           <br>
           <v-text-field 
             prepend-icon="mdi-map-marker"
-            label="Address" 
+            label="nhập địa chỉ nhận hàng ..." 
             :rules="rules"
             hide-details="auto"
             v-model="address"></v-text-field>
           <div class="text-center">
-            <v-btn class="primary white--text mt-5" outlined @click="checkout({total, address})">PROCEED TO PAY</v-btn>
+            <v-btn class="primary white--text mt-5" outlined @click="checkout({total, address})">Thanh Toán </v-btn>
           </div>
         </v-col>
       </v-row>
@@ -171,7 +170,7 @@ import {mapActions, mapMutations, mapGetters} from 'vuex';
           },
           ...mapGetters(['getOrder']),
           total(){
-            return this.getOrder + 15
+            return this.getOrder + 20000 + this.getOrder * 0.05
           }
         },
         methods:{

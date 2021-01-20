@@ -6,13 +6,13 @@
          class="col-md-3 col-sm-3 col-xs-12"
         >
           <v-card outlined>
-            <v-card-title>Filters</v-card-title>
+            <v-card-title>Lọc</v-card-title>
             <v-divider></v-divider>
             <template>
               <v-treeview :items="items" :open="[1]" :active="[5]" :selected-color="'#fff'" activatable open-on-click dense></v-treeview>
             </template>
             <v-divider></v-divider>
-            <v-card-title>Price</v-card-title>
+            <v-card-title>Giá</v-card-title>
             <v-range-slider
               v-model="range"
               :max="max"
@@ -97,7 +97,6 @@
                     height="200px"
                     :src="pro.image"
                   >
-                    <v-card-title>{{pro.description}} </v-card-title>
                     <v-expand-transition>
                       <div
                         v-if="hover"

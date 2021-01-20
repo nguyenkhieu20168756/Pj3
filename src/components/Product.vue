@@ -23,14 +23,14 @@
           <div class="pl-6">
             <p class="display-1 mb-0">{{product.name}}</p>
             <v-card-actions class="pa-0">
-              <p class="headline font-weight-light pt-3">${{product.price}} <del style="" class="subtitle-1 font-weight-thin">${{product.price + product.price*0.1}}</del></p>
+              <p class="headline font-weight-light pt-3" style="color : red">{{product.price}} VNĐ<del style="" class="subtitle-1 font-weight-thin"> {{product.price + product.price*0.1}} VNĐ</del></p>
               <v-spacer></v-spacer>
               <v-rating v-model="rating" class="" background-color="warning lighten-3"
                         color="warning" dense></v-rating>
               <span class="body-2	font-weight-thin"> 25 REVIEWS</span>
             </v-card-actions>
             <p class="subtitle-1 font-weight-thin">{{product.description}}</p>
-            <p class="title">Items</p>
+            <p class="title">Số lượng</p>
               
             <v-text-field
                 outlined
@@ -41,14 +41,14 @@
                 v-model="quantity"
                 type="number"
             ></v-text-field>
-            <h5>Choose size</h5>
+            <h5>Chọn size</h5>
             <select class="custom-select mb-5" style="width : 200px"  v-model="size">
               <option v-for="i of product.namesize" :key="i">{{i}}</option>
             </select>
-            <p v-if="product.amount == 0">out of product</p>
-            <p v-else>Amount : {{product.amount}}</p>
-            <v-btn v-if="product.amount !== 0" class="primary white--text" outlined tile dense @click="addToCart"><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
-            <v-btn class="ml-4" outlined tile>ADD TO WISHLIST</v-btn>
+            <p v-if="product.amount == 0">Hết hàng !</p>
+            <p v-else>Kho : {{product.amount}}</p>
+            <v-btn v-if="product.amount !== 0" class="primary white--text" outlined tile dense @click="addToCart"><v-icon>mdi-cart</v-icon> Thêm vào gió hàng</v-btn>
+            <v-btn class="ml-4" outlined tile>Thêm vào yêu thích</v-btn>
           </div> 
       </div>
       </div>

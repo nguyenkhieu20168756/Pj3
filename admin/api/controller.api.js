@@ -145,3 +145,11 @@ module.exports.filter = async(req, res) =>{
     })
     res.json(product)
 }
+
+
+module.exports.getDm = async(req, res)=>{
+    let id = req.params.id
+    let dm = await producttypeDb.findOne({_id :id})
+    console.log(dm)
+    res.json(dm.name)
+}

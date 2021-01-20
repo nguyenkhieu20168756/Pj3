@@ -29,5 +29,7 @@ router.get('/pagination/:page', controller.pagination)
 //filer
 router.get('/filter/:min/:max', controller.filter)
 
+//get danh muc
+router.get('/:id', controller.getDm)
 
 module.exports = router;

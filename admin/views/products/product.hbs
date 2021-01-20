@@ -1,16 +1,17 @@
 <div>
     <h1>Sản phẩm</h1>
-
+    <br>
+    <a name="Thêm sản phẩm" id="" class="btn btn-primary" href="/products/addproduct" role="button">Thêm sản phẩm</a>
 
     <table class="table table-hover mt-5">
         <tr>
 
-            <th>Image</th>
+            <th>Ảnh</th>
             <th>Tên</th>
             <th>Thương hiệu</th>
             <th>Giá</th>
             <th>Số lượng</th>
-            <th>Size</th>
+            <th>Kích cỡ</th>
             <th>Danh mục sản phẩm</th>
             <th></th>
             <th></th>
@@ -65,9 +66,6 @@
         </tr>
         {{/each}}
     </table>
-
-    <a name="Thêm sản phẩm" id="" class="btn btn-primary" href="/products/addproduct" role="button">Thêm sản phẩm</a>
-
      <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item {{style}}"><a class="page-link" href="?page={{pre}}">Previous</a></li>

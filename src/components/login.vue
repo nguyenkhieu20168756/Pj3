@@ -1,6 +1,6 @@
 <template>
   <v-app>
-        <v-dialog v-model="dialog" persistent max-width="600px" min-width="360px">
+        <v-dialog v-model="dialog" persistent max-width="600px" min-width="380px">
             <div>
                 <v-tabs v-model="tab" show-arrows background-color="deep-purple accent-4" icons-and-text dark grow>
                     <v-tabs-slider color="purple darken-4"></v-tabs-slider>
@@ -17,13 +17,13 @@
                                             <v-text-field v-model="loginEmail" :rules="loginEmailRules" label="E-mail" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field v-model="loginPassword" :append-icon="show1?'eye':'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+                                            <v-text-field v-model="loginPassword" :append-icon="show1?'eye':'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Mật khẩu" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
                                         </v-col>
                                         <v-col class="d-flex" cols="12" sm="6" xsm="12">
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" @click="login"> Login </v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="login"> Đăng nhập </v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -36,23 +36,23 @@
                                 <v-form ref="registerForm" v-model="valid" lazy-validation>
                                     <v-row>
                                         <v-col cols="12">
-                                            <v-text-field v-model="username" :rules="[rules.required]" label="User Name" maxlength="20" required></v-text-field>
+                                            <v-text-field v-model="username" :rules="[rules.required]" label="Tên tài khoản" maxlength="20" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
                                             <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field v-model="phonenumber" label="Phone Number" required></v-text-field>
+                                            <v-text-field v-model="phonenumber" label="Số điện thoại" required></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+                                            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Mật khẩu" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
                                         </v-col>
                                         <v-col cols="12">
-                                            <v-text-field block v-model="verify" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, passwordMatch]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Confirm Password" counter @click:append="show1 = !show1"></v-text-field>
+                                            <v-text-field block v-model="verify" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, passwordMatch]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Nhâp lại mật khẩu" counter @click:append="show1 = !show1"></v-text-field>
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                            <v-btn x-large block :disabled="!valid" color="success" @click.prevent="register">Register</v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click.prevent="register">Đăng ký</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -106,8 +106,8 @@ export default {
     dialog: true,
     tab: 0,
     tabs: [
-        {name:"Login", icon:"mdi-account"},
-        {name:"Register", icon:"mdi-account-outline"}
+        {name:"Đăng nhập", icon:"mdi-account"},
+        {name:"Đăng ký", icon:"mdi-account-outline"}
     ],
     valid: true,
     

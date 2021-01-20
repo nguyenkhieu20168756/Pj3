@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
     cart : [],
     productsByCategory : [],
     productsSearch : [],
-    allpage : 0
+    allpage : 0,
+    danhmuc : ''
   },
   mutations:{
     setUser(state){
@@ -53,7 +54,7 @@ export const store = new Vuex.Store({
         address : address,
         products : state.cart,
         totalOrder : total,
-        completed : 'unconfimred'
+        completed : 'Chưa xác nhận'
       })
       await state.cart.forEach(item => {
         api.put(`updateProduct/${item.product._id}/${item.quantity}`)
