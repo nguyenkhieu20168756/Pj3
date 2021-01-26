@@ -25,19 +25,19 @@
               <v-col cols="12" sm="5">
                 <v-text-field
                   :value="range[0]"
-                  label="Min"
+                  label="Thấp nhất"
                   outlined
                   dense
                   @change="$set(range, 0, $event)"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="2">
-                <p class="pt-2 text-center">TO</p>
+                <p class="pt-2 text-center">Đến</p>
               </v-col>
               <v-col cols="12" sm="5">
                 <v-text-field
                   :value="range[1]"
-                  label="Max"
+                  label="Cao nhất"
                   outlined
                   dense
                   @change="$set(range, 1, $event)"
@@ -45,7 +45,7 @@
               </v-col>
             </v-row>
             <v-divider></v-divider>
-            <v-card-title class="pb-0">Customer Rating</v-card-title>
+            <v-card-title class="pb-0">Đánh giá</v-card-title>
             <v-container class="pt-0"  fluid>
               <v-checkbox append-icon="mdi-star" label="4 & above" hide-details dense></v-checkbox>
               <v-checkbox append-icon="mdi-star" label="3 & above" hide-details dense></v-checkbox>
@@ -53,16 +53,7 @@
               <v-checkbox append-icon="mdi-star" label="1 & above" hide-details dense></v-checkbox>
             </v-container>
             <v-divider></v-divider>
-            <v-card-title class="pb-0">Size</v-card-title>
-            <v-container class="pt-0" fluid>
-              <v-checkbox  label="XS" hide-details dense></v-checkbox>
-              <v-checkbox  label="S" hide-details dense></v-checkbox>
-              <v-checkbox  label="M" hide-details dense></v-checkbox>
-              <v-checkbox  label="L" hide-details dense></v-checkbox>
-              <v-checkbox  label="XL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXL" hide-details dense></v-checkbox>
-              <v-checkbox  label="XXXL" hide-details dense></v-checkbox>
-            </v-container>
+            
 
           </v-card>
         </div>
@@ -74,7 +65,7 @@
 
           <v-row dense>
             <v-col cols="12" sm="8" class="pl-6 pt-6">
-              <small>Showing 1-12 of 200 products</small>
+              
             </v-col>
             <v-col cols="12" sm="4">
               <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px;" outlined dense></v-select>
@@ -103,14 +94,14 @@
                         class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%;"
                       >
-                        <v-btn v-if="hover" :to="`/product/details/${pro._id}`" class="" outlined>VIEW</v-btn>
+                        <v-btn v-if="hover" :to="`/product/details/${pro._id}`" class="" outlined>Xem</v-btn>
                       </div>
 
                     </v-expand-transition>
                   </v-img>
                   <v-card-text class="text--primary">
                     <div><a href="/product" style="text-decoration: none">{{pro.name}}</a></div>
-                    <div>${{pro.price}}</div>
+                    <div>{{pro.price}}VNĐ</div>
                   </v-card-text>
                 </v-card>
               </v-hover>
@@ -155,51 +146,49 @@ import {mapGetters, mapActions} from 'vuex';
 
     export default {
         data: () => ({
-            range: [0, 10000],
-            select:'Popularity',
+            range: [0, 10000000],
+            select:'Sắp xếp',
             options: [
-                'Default',
-                'Popularity',
-                'Relevance',
-                'Price: Low to High',
-                'Price: High to Low',
+                'Thấp nhất đến cao nhất',
+                'Cao nhất đến thấp nhất',
+                
             ],
             page:1,
             breadcrums: [
                 {
-                    text: 'Home',
+                    text: 'Trang chủ',
                     disabled: false,
                     href: 'breadcrumbs_home',
                 },
                 {
-                    text: 'Clothing',
+                    text: 'Sản phẩm',
                     disabled: false,
                     href: 'breadcrumbs_clothing',
                 },
                 {
-                    text: 'T-Shirts',
+                    text: '',
                     disabled: true,
                     href: 'breadcrumbs_shirts',
                 },
             ],
             min:0,
-            max:10000,
+            max:10000000,
             items: [
                 {
                     id: 2,
-                    name: 'Shoes',
+                    name: 'Giày',
                     children: [
-                        { id: 2, name: 'Casuals' },
-                        { id: 3, name: 'Formals' },
-                        { id: 4, name: 'Sneakers' },
+                        { id: 2, name: 'Giày tây' },
+                        { id: 3, name: 'Giày thể thao' },
+                        
                     ],
                 },
                 {
                     id: 1,
-                    name: 'Clothing',
+                    name: 'Quần áo',
                     children: [
-                        { id: 5, name: 'Shirts' },
-                        { id: 6, name: 'Tops' },
+                        { id: 5, name: 'Áo' },
+                        { id: 6, name: 'Quần' },
                         { id: 7, name: 'Tunics' },
                         { id: 8, name: 'Bodysuit' },
                     ],

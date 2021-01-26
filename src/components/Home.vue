@@ -9,7 +9,7 @@
           align="center"
           justify="center"
         >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Upto 60% + Extra 10%</strong></div><br/>
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Giảm 60% + Thêm 10%</strong></div><br/>
         </v-row>
       </v-carousel-item>
       <v-carousel-item
@@ -20,7 +20,7 @@
           align="center"
           justify="center"
         >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Upto 60% + Extra 10%</strong></div><br/>
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Giảm 50% </strong></div><br/>
         </v-row>
       </v-carousel-item>
       <v-carousel-item
@@ -31,7 +31,7 @@
           align="center"
           justify="center"
         >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Upto 60% + Extra 10%</strong></div><br/>
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Giảm 30%++</strong></div><br/>
         </v-row>
       </v-carousel-item>
       <v-carousel-item
@@ -42,7 +42,7 @@
           align="center"
           justify="center"
         >
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Upto 60% + Extra 10%</strong></div><br/>
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only"><strong>Giảm 50% </strong></div><br/>
         </v-row>
       </v-carousel-item>
 
@@ -59,9 +59,9 @@
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
           >
-           <h1 class="text-center font-size">Top Picks</h1>
+           <h1 class="text-center font-size">Bán chạy</h1>
             <div class="text-center">
-              <v-btn  href="/shop" class="white--text " outlined>SHOP NOW</v-btn>
+              <v-btn  href="/shop" class="white--text " outlined>MUA NGAY</v-btn>
             </div>
 
 
@@ -90,9 +90,9 @@
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
           >
-            <h1 class="text-center font-size">New Arrivals</h1>
+            <h1 class="text-center font-size">Sản phẩm mới</h1>
             <div class="text-center">
-              <v-btn  href="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+              <v-btn  href="/shop" class="white--text" outlined>Mua ngay</v-btn>
             </div>
           </v-img>
         </v-card>
@@ -109,9 +109,9 @@
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"
           >
-            <h1 class="text-center font-size">SHIRT</h1>
+            <h1 class="text-center font-size">ÁO</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>SHOP NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <v-btn class="white--text caption"  href="/shop" text>Mua ngay <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
           </v-img>
         </v-card>
@@ -126,9 +126,9 @@
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"
           >
-            <h1 class="text-center font-size">TROUSERS</h1>
+            <h1 class="text-center font-size">QUẦN</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>SHOP NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <v-btn class="white--text caption"  href="/shop" text>Mua ngay <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
           </v-img>
         </v-card>
@@ -143,9 +143,9 @@
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"
           >
-            <h1 class="text-center font-size">SHOES</h1>
+            <h1 class="text-center font-size">GIÀY</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption"  href="/shop" text>SHOP NOW <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
+              <v-btn class="white--text caption"  href="/shop" text>Mua ngay <v-icon class="white--text caption">mdi-arrow-right</v-icon></v-btn>
             </div>
           </v-img>
         </v-card>
@@ -159,7 +159,7 @@
             tile
             outlined
           >
-            <v-card-title class="subheading ">Deals of the Day</v-card-title>
+            <v-card-title class="subheading ">Hàng ngày</v-card-title>
             <v-divider></v-divider>
             <div class="row">
               <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
@@ -175,11 +175,11 @@
                     height="200px"
                     :src="require('../assets/img/home/deal1.jpg')"
                   >
-                    <v-card-title>Bags & Purses </v-card-title>
+                    <v-card-title>Phụ kiện </v-card-title>
                   </v-img>
 
                   <v-card-text class="text--primary text-center">
-                    <div>Upto 60% + Extra 10%</div>
+                    <div>Giảm 60%</div>
                     <div>Baggit, Zara, Fossil</div>
                   </v-card-text>
 
@@ -190,7 +190,7 @@
                       outlined
                       color="info"
                     >
-                      Explore
+                      Xem
                     </v-btn>
                   </div>
                 </v-card>
@@ -209,11 +209,11 @@
                     height="200px"
                     :src="require('../assets/img/home/deal2.jpg')"
                   >
-                    <v-card-title>T-Shirt </v-card-title>
+                    <v-card-title>Áo</v-card-title>
                   </v-img>
 
                   <v-card-text class="text--primary text-center">
-                    <div>Upto 50%</div>
+                    <div>Giảm 50%</div>
                     <div>Zara, Selected, Celio</div>
                   </v-card-text>
 
@@ -223,7 +223,7 @@
                       outlined
                       color="info"
                     >
-                      Explore
+                      Xem
                     </v-btn>
                   </div>
                 </v-card>
@@ -242,11 +242,11 @@
                     height="200px"
                     :src="require('../assets/img/home/deal3.jpg')"
                   >
-                    <v-card-title>Jeans </v-card-title>
+                    <v-card-title>Quần</v-card-title>
                   </v-img>
 
                   <v-card-text class="text--primary text-center">
-                    <div>Upto 60% + Extra 10%</div>
+                    <div>Giảm 60%++</div>
                     <div>Jack & Jones, Levis</div>
                   </v-card-text>
 
@@ -256,7 +256,7 @@
                       outlined
                       color="info"
                     >
-                      Explore
+                     Xem
                     </v-btn>
                   </div>
                 </v-card>
@@ -275,11 +275,11 @@
                     height="200px"
                     :src="require('../assets/img/home/deal4.jpg')"
                   >
-                    <v-card-title>Shoes </v-card-title>
+                    <v-card-title>Giày </v-card-title>
                   </v-img>
 
                   <v-card-text class="text--primary text-center">
-                    <div>Upto 60% + Extra 10%</div>
+                    <div>Giảm 30%++</div>
                     <div>Nike, Adidas, Puma</div>
                   </v-card-text>
 
@@ -289,7 +289,7 @@
                       outlined
                       color="info"
                     >
-                      Explore
+                      Xem
                     </v-btn>
                   </div>
                 </v-card>
@@ -309,8 +309,8 @@
                 <v-icon class="display-2">mdi-truck</v-icon>
               </v-col>
               <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">FREE SHIPPING & RETURN</h3>
-                              <p class="font-weight-thin">Free Shipping over $300</p>
+                <h3 class="font-weight-light">Miễn phí giao hàng</h3>
+                              <p class="font-weight-thin">Miễn phí giao hàng cho đơn từ 2.000.000 VND</p>
               </v-col>
             </v-row>
           </v-col>
@@ -320,8 +320,8 @@
                 <v-icon class="display-2">mdi-cash-usd</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">MONEY BACK GUARANTEE</h3>
-                <p class="font-weight-thin">30 Days Money Back Guarantee</p>
+                <h3 class="font-weight-light">ĐỔI TRẢ HÀNG</h3>
+                <p class="font-weight-thin">30 Ngày đổi trả miễn phí</p>
               </v-col>
             </v-row>
           </v-col>
@@ -332,7 +332,7 @@
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
                 <h3 class="font-weight-light">035-939-6996</h3>
-                <p class="font-weight-thin">24/7 Available Support</p>
+                <p class="font-weight-thin">Hỗ trợ 24/7</p>
               </v-col>
             </v-row>
           </v-col>

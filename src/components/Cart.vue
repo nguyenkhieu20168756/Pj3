@@ -10,7 +10,7 @@
               <thead>
               <tr>
                 <th class="text-center">Sản phẩm</th>
-                <th class="text-center">Size</th>
+                <th class="text-center">Kích cỡ</th>
                 <th class="text-center">Giá</th>
                 <th class="text-center">Số lượng</th>
                 <th class="text-center">Thành tiền</th>
@@ -102,8 +102,8 @@
                 <v-icon class="display-2">mdi-truck</v-icon>
               </v-col>
               <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">FREE SHIPPING & RETURN</h3>
-                <p class="font-weight-thin">Free Shipping over $300</p>
+                <h3 class="font-weight-light">Miễn phí giao hàng</h3>
+                <p class="font-weight-thin">Miễn phí giao hàng cho đơn từ 2.000.000 VND</p>
               </v-col>
             </v-row>
           </v-col>
@@ -113,8 +113,8 @@
                 <v-icon class="display-2">mdi-cash-usd</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">MONEY BACK GUARANTEE</h3>
-                <p class="font-weight-thin">30 Days Money Back Guarantee</p>
+                <h3 class="font-weight-light">ĐỔI TRẢ HÀNG</h3>
+                <p class="font-weight-thin">30 Ngày đổi trả miễn phí</p>
               </v-col>
             </v-row>
           </v-col>
@@ -124,8 +124,8 @@
                 <v-icon class="display-2">mdi-headset</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">020-800-456-747</h3>
-                <p class="font-weight-thin">24/7 Available Support</p>
+                <h3 class="font-weight-light">035-939-6996</h3>
+                <p class="font-weight-thin">Hỗ trợ 24/7</p>
               </v-col>
             </v-row>
           </v-col>

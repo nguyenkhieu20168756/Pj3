@@ -17,19 +17,19 @@
               <v-col cols="12" sm="5">
                 <v-text-field
                   :value="range[0]"
-                  label="Min"
+                  label="Thấp nhất"
                   outlined
                   dense
                   @change="$set(range, 0, $event)"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="2">
-                <p class="pt-2 text-center">TO</p>
+                <p class="pt-2 text-center">Đến</p>
               </v-col>
               <v-col cols="12" sm="5">
                 <v-text-field
                   :value="range[1]"
-                  label="Max"
+                  label="cao nhất"
                   outlined
                   dense
                   @change="$set(range, 1, $event)"
@@ -37,7 +37,7 @@
               </v-col>
             </v-row>
             <button class="btn btn-success ml-5" @click="filter(range)">
-              Filter
+              Lọc
             </button>
             <v-divider></v-divider>
             <template>
@@ -93,7 +93,7 @@
                           :to="`/product/details/${pro._id}`"
                           class=""
                           outlined
-                          >VIEW</v-btn
+                          >Xem</v-btn
                         >
                       </div>
                     </v-expand-transition>
@@ -104,7 +104,7 @@
                         pro.name
                       }}</a>
                     </div>
-                    <div class="">${{ pro.price }}</div>
+                    <div class="">{{ pro.price }}VNĐ</div>
                   </v-card-text>
                 </v-card>
               </v-hover>
@@ -151,11 +151,11 @@ export default {
     select: "",
     options: [
       {
-        type: "giá từ cao đến thấp",
+        type: "Từ cao đến thấp",
         func: "caoToThap"
       },
       {
-        type: "giá từ thấp đến cao",
+        type: "Từ thấp đến cao",
         func: "thapToCao"
       }
     ],
@@ -177,21 +177,20 @@ export default {
     items: [
       {
         id: 2,
-        name: "Shoes",
+        name: "Giày",
         children: [
-          { id: 2, name: "Casuals" },
-          { id: 3, name: "Formals" },
-          { id: 4, name: "Sneakers" }
+          { id: 2, name: "Giày tây" },
+          { id: 3, name: "Giày thể thao" },
+          
         ]
       },
       {
         id: 1,
         name: "Clothing",
         children: [
-          { id: 5, name: "Shirts" },
-          { id: 6, name: "Tops" },
-          { id: 7, name: "Tunics" },
-          { id: 8, name: "Bodysuit" }
+          { id: 4, name: "Áo" },
+          { id: 5, name: "Quần" },
+          
         ]
       }
     ],

@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-container>
-      <p class="display-3 font-weight-light	text-center pa-4">Best brands for fashion</p>
-      <p class="overline text-center">By <b>John Doe</b> | January 24,2020</p>
+      <p class="display-3 font-weight-light	text-center pa-4">Thương hiệu bán chạy</p>
+      <p class="overline text-center">Tác giả <b>Hạo Nhiên</b> | 24 tháng 12 năm 2020</p>
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <v-img
@@ -10,26 +10,26 @@
             height="400px"
             :src="require('../assets/img/home/slider2.jpg')"
           ></v-img>
-          <p class="display-1 mb-0 pt-5">Lorem ipsum</p>
-          <p class="pt-5 subtitle-1 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p class="display-1 mb-0 pt-5">Thương hiệu </p>
+          <p class="pt-5 subtitle-1 font-weight-light">
           </p>
           <ul class="subtitle-1 font-weight-light">
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
+            <li>Sản phẩm bán chạy</li>
+            <li>Thương hiệu được quan tâm</li>
           </ul>
-          <p class="subtitle-1 font-weight-light pt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p class="subtitle-1 font-weight-light pt-5">
           </p>
           <v-img
             class="white--text align-end"
             height="400px"
             :src="require('../assets/img/home/slider3.jpg')"
           ></v-img>
-          <p class="display-1 mb-0 pt-5">Lorem ipsum</p>
-          <p class="subtitle-1 font-weight-light pt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p class="display-1 mb-0 pt-5">Thương hiệu tốt nhất</p>
+          <p class="subtitle-1 font-weight-light pt-5">
           </p>
-          <p class="subtitle-1 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p class="subtitle-1 font-weight-light">
           </p>
-          <p class="body-1	font-weight-light pt-10"><b>3 COMMENTS</b></p>
+          <p class="body-1	font-weight-light pt-10"><b>Bình luận</b></p>
           <v-list
             three-line="true"
             avatar="true"
@@ -64,30 +64,16 @@
             items: [
                 {
                     avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                    title: 'Lorem ipsum dolor?',
-                    subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Tincidunt arcu non sodales neque sodales ut etiam. Lectus arcu bibendum at varius vel pharetra. Morbi tristique senectus et netus et malesuada.\n" +
+                    title: 'Chất liệu sản phẩm',
+                    subtitle: "<span class='text--primary'>Ngọc Khánh</span> &mdash; Chất liệu sản phẩm khá tốt\n" +
                         "\n",
                 },
                 {
                     avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                    title: 'Lorem ipsum dolor <span class="grey--text text--lighten-1">4</span>',
-                    subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                    title: 'Màu sắc <span class="grey--text text--lighten-1">4</span>',
+                    subtitle: "<span class='text--primary'>to Hạo</span> &mdash; Màu sắc hài hòa"
                 },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: ""
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                },
+                
             ],
         }),
     }
